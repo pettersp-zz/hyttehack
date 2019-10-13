@@ -1,9 +1,52 @@
 <html>
 <head>
     <link rel="stylesheet" href='/static/style.css' />
-</head>
-<body>
-    <h1>My website</h1>
-    <a href="/hello/jonas">Hi Jonas</a>
-</body>
-</html>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <body>
+        <h1>Gratulerer med dagen Mamma :)</h1>
+        <a href="/signal/fram">fram</a>
+        <a href="/signal/bak">bak</a>
+        <a href="/signal/venstre">venstre</a>
+        <a href="/signal/hoyre">hoyre</a>
+        <p><b id="command"></b></p>
+
+    </body>
+    <script>
+        document.onkeydown = function(e) {
+            switch (e.keyCode) {
+                case 37:
+                $("#command").text("Venstre")
+
+                $.ajax({
+                    url: '/signal/left',
+                    type: 'GET'
+                });
+                break;
+                case 38:
+                $("#command").text("Fram")
+                $.ajax({
+                    url: '/signal/fram',
+                    type: 'GET'
+                });
+
+                break;
+                case 39:
+                $("#command").text("Høyre")
+                $.ajax({
+                    url: '/signal/høyre',
+                    type: 'GET'
+                });
+
+                break;
+                case 40:
+                $("#command").text("Bak")
+                $.ajax({
+                    url: '/signal/bak',
+                    type: 'GET'
+                });
+
+                break;
+            }
+        };
+    </script>
+    </html>

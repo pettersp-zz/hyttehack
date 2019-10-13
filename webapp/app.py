@@ -6,9 +6,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/cakes')
-def cakes():
-    return render_template('cakes.html')
+@app.route('/signal/<signal>')
+def kontroll(signal):
+    if signal == "fram":
+        #Robottest1.forward(40)
+        print("Kjører fram")
+    else:
+        #Robottest1.stop_all(40)
+        print("Stopper")
+    return render_template('index.html')
 
 @app.route('/hello/<name>')
 def hello(name):
